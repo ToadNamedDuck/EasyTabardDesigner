@@ -1,0 +1,8 @@
+## Interface: 110000
+## Version: 1.0.0
+## Title: Easy Tabard Designer
+## Notes: Gives a warning if you vendor an item belonging to an equipment set.
+## Author: ToadNamedDuck
+## IconTexture: 132366
+EasyTabardDesigner.lua
+EasyTabardDesigner.xml
