@@ -4,7 +4,7 @@
     <Frame name="EasyTabardDesignerFrame">
         <Scripts>
             <OnLoad>
-                EasyTabardDesigner_OnLoad();
+                EasyTabardDesigner_OnLoad(self);
             </OnLoad>
         </Scripts>
         <Size x="200" y="250"/>
@@ -18,7 +18,13 @@
                 </Texture>
             </Layer>
             <Layer level="OVERLAY">
-                Can you see this?
+                <FontString name="EasyTabardDesigner_TestOverlayText" inherits="GameFontNormal">
+                    <Size x="255" y="16"/>
+                    <Color r="255" g="255" b="255"/>
+                    <Anchors>
+                        <Anchor point="center" x="0" y="0"/>
+                    </Anchors>
+                </FontString>
             </Layer>
         </Layers>
     </Frame>

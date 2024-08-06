@@ -14,6 +14,14 @@ SlashCmdList["TABARDSHOW"] = function(msg, editBox)
 end
 
 --OnLoad Function, which just makes sure the frame is not visible when you log in for now.
-EasyTabardDesigner_OnLoad = function()
+EasyTabardDesigner_OnLoad = function(self)
     EasyTabardDesignerFrame:Hide();
+    -- Register Events we want to listen for, which are just copied from the original tabard frame
+    self:RegisterEvent("TABARD_CANSAVE_CHANGED");
+	self:RegisterEvent("TABARD_SAVE_PENDING");
+	self:RegisterEvent("UNIT_MODEL_CHANGED");
+	self:RegisterEvent("DISPLAY_SIZE_CHANGED");
+	self:RegisterEvent("UI_SCALE_CHANGED");
+    -- Put text into the black box
+    EasyTabardDesigner_TestOverlayText:SetText("Can you see this?")
 end
