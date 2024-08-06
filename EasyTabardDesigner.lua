@@ -5,10 +5,10 @@
 
 -- Slash command which makes the xml frame visible
 SLASH_TABARDSHOW = "/tabardshow"
-SlashCmdList["TABARDSHOW"] = function()
+SlashCmdList["TABARDSHOW"] = function(msg, editBox)
     if EasyTabardDesignerFrame:IsVisible() then
-        EasyTabardDesignerFrame:Show();
+        EasyTabardDesignerFrame:Hide();
     else
-        EasyTabardDesignerFrame:Hide()
+        EasyTabardDesignerFrame:Show()
     end
 end
