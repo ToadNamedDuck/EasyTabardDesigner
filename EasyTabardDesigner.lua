@@ -4,7 +4,7 @@
 -- When changing Icons, the right side panels should show a TabardModel for each available icon, each of which keeps the current border, border color, and background color.
 
 -- Slash command which makes the xml frame visible
-SLASH_TABARDSHOW = "/tabardshow"
+SLASH_TABARDSHOW1 = "/tabardshow"
 SlashCmdList["TABARDSHOW"] = function(msg, editBox)
     if EasyTabardDesignerFrame:IsVisible() then
         EasyTabardDesignerFrame:Hide();
