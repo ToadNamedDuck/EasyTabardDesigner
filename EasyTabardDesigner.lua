@@ -12,3 +12,8 @@ SlashCmdList["TABARDSHOW"] = function(msg, editBox)
         EasyTabardDesignerFrame:Show()
     end
 end
+
+--OnLoad Function, which just makes sure the frame is not visible when you log in for now.
+EasyTabardDesigner_OnLoad = function()
+    EasyTabardDesignerFrame:Hide();
+end

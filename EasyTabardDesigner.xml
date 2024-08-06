@@ -2,6 +2,11 @@
     <Script file="EasyTabardDesigner.lua"/>
     <!-- Main Frame -->
     <Frame name="EasyTabardDesignerFrame">
+        <Scripts>
+            <OnLoad>
+                EasyTabardDesigner_OnLoad();
+            </OnLoad>
+        </Scripts>
         <Size x="200" y="250"/>
         <Anchors>
             <Anchor point="CENTER"/>
