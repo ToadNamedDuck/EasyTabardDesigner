@@ -1,5 +1,8 @@
 <Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/ ..\..\Blizzard_SharedXML\UI.xsd">
     <Script file="EasyTabardDesigner.lua"/>
+    <!-- Template Icon Display/Select Button -->
+    <!-- Template Color/Other Select Button -->
+    <!-- Other Template Accept/Cancel Button -->
     <!-- Main Frame -->
     <Frame name="EasyTabardDesignerFrame">
         <Scripts>
@@ -18,6 +21,7 @@
                 </Texture>
             </Layer>
             <Layer level="OVERLAY">
+                <!-- Put a button here to close the window, should anchor top and right - should also stop tabard creation-->
                 <FontString name="EasyTabardDesigner_TestOverlayText" inherits="GameFontNormal">
                     <Size x="255" y="16"/>
                     <Color r="255" g="255" b="255"/>
@@ -27,5 +31,16 @@
                 </FontString>
             </Layer>
         </Layers>
+        <Button name="EasyTabardDesigner_CloseButton">
+            <Anchors>
+                <Anchor point="TOPRIGHT" relativeTo="EasyTabardDesignerFrame"/>
+            </Anchors>
+            <Size x="15" y="15"/>
+            <Scripts>
+                <OnClick>
+                    EasyTabardDesigner_CloseButton();
+                </OnClick>
+            </Scripts>
+        </Button>
     </Frame>
 </Ui>
