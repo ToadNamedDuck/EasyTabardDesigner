@@ -4,7 +4,7 @@
     <!-- Template Color/Other Select Button -->
     <!-- Other Template Accept/Cancel Button -->
     <!-- Main Frame -->
-    <Frame name="EasyTabardDesignerFrame">
+    <Frame name="EasyTabardDesignerFrame" moveable="true" enableMouse="true">
         <Scripts>
             <OnLoad>
                 EasyTabardDesigner_OnLoad(self);
