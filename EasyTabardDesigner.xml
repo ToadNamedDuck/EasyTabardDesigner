@@ -4,11 +4,17 @@
     <!-- Template Color/Other Select Button -->
     <!-- Other Template Accept/Cancel Button -->
     <!-- Main Frame -->
-    <Frame name="EasyTabardDesignerFrame" moveable="true" enableMouse="true">
+    <Frame name="EasyTabardDesignerFrame" movable="true" enableMouse="true" registerForDrag="LeftButton">
         <Scripts>
             <OnLoad>
                 EasyTabardDesigner_OnLoad(self);
             </OnLoad>
+            <OnDragStart>
+                self:StartMoving();
+            </OnDragStart>
+            <OnDragStop>
+                self:StopMovingOrSizing();
+            </OnDragStop>
         </Scripts>
         <Size x="200" y="250"/>
         <Anchors>
@@ -21,26 +27,27 @@
                 </Texture>
             </Layer>
             <Layer level="OVERLAY">
-                <!-- Put a button here to close the window, should anchor top and right - should also stop tabard creation-->
                 <FontString name="EasyTabardDesigner_TestOverlayText" inherits="GameFontNormal">
                     <Size x="255" y="16"/>
-                    <Color r="255" g="255" b="255"/>
+                    <Color r="1" g="1" b="1"/>
                     <Anchors>
-                        <Anchor point="center" x="0" y="0"/>
+                        <Anchor point="CENTER" x="0" y="0"/>
                     </Anchors>
                 </FontString>
             </Layer>
         </Layers>
-        <Button name="EasyTabardDesigner_CloseButton">
-            <Anchors>
-                <Anchor point="TOPRIGHT" relativeTo="EasyTabardDesignerFrame"/>
-            </Anchors>
-            <Size x="15" y="15"/>
-            <Scripts>
-                <OnClick>
-                    EasyTabardDesigner_CloseButton();
-                </OnClick>
-            </Scripts>
-        </Button>
+        <Frames>
+            <Button name="EasyTabardDesigner_CloseButton" inherits="UIPanelCloseButtonNoScripts">
+                <Anchors>
+                    <Anchor point="TOPRIGHT" relativeTo="EasyTabardDesignerFrame" x="2" y="2"/>
+                </Anchors>
+                <Size x="16" y="16"/>
+                <Scripts>
+                    <OnClick>
+                        EasyTabardDesigner_CloseButton();
+                    </OnClick>
+                </Scripts>
+            </Button>
+        </Frames>
     </Frame>
 </Ui>

@@ -29,6 +29,7 @@ end
 -- X button
 EasyTabardDesigner_CloseButton = function()
     EasyTabardDesignerFrame:Hide();
+    --Needs to stop Tabard Creation
 end
 
 -- EasyTabardDesigner_IconSelectButton_Click = function(tabardIconId) ?
