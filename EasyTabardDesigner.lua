@@ -24,6 +24,7 @@ EasyTabardDesigner_OnLoad = function(self)
 	self:RegisterEvent("UI_SCALE_CHANGED");
     -- Text at top should change based on if you are editing guild tabard or personal tabard
     EasyTabardDesigner_TabardModeText:SetText("Editing Guild Tabard")
+    EasyTabardDesigner_TabardModel:SetUnit("player");
 end
 
 -- X button

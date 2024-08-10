@@ -23,7 +23,7 @@
         <Layers>
             <Layer level="BACKGROUND">
                 <Texture setAllPoints="true">
-                    <Color r="0" g="0" b="0"/>
+                    <Color r="0" g="0" b="0" a="0.4"/>
                 </Texture>
             </Layer>
             <Layer level="OVERLAY">
@@ -39,7 +39,7 @@
         <Frames>
             <Button name="EasyTabardDesigner_CloseButton" inherits="UIPanelCloseButtonNoScripts">
                 <Anchors>
-                    <Anchor point="TOPRIGHT" relativeTo="EasyTabardDesignerFrame" x="2" y="2"/>
+                    <Anchor point="TOPRIGHT" relativeTo="EasyTabardDesignerFrame"/>
                 </Anchors>
                 <Size x="16" y="16"/>
                 <Scripts>
@@ -48,6 +48,13 @@
                     </OnClick>
                 </Scripts>
             </Button>
+
+            <TabardModel name="EasyTabardDesigner_TabardModel" mixin="TabardModelFrameMixin">
+                <Size x="200" y="236"/>
+                <Anchors>
+                    <Anchor point="BOTTOM" relativeTo="EasyTabardDesignerFrame" x="30"/>
+                </Anchors>
+            </TabardModel>
         </Frames>
     </Frame>
 </Ui>
