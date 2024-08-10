@@ -27,11 +27,11 @@
                 </Texture>
             </Layer>
             <Layer level="OVERLAY">
-                <FontString name="EasyTabardDesigner_TestOverlayText" inherits="GameFontNormal">
-                    <Size x="255" y="16"/>
+                <FontString name="EasyTabardDesigner_TabardModeText" inherits="GameFontNormal">
+                    <Size x="200" y="16"/>
                     <Color r="1" g="1" b="1"/>
                     <Anchors>
-                        <Anchor point="CENTER" x="0" y="0"/>
+                        <Anchor point="TOP" x="0" y="0"/>
                     </Anchors>
                 </FontString>
             </Layer>

@@ -22,8 +22,8 @@ EasyTabardDesigner_OnLoad = function(self)
 	self:RegisterEvent("UNIT_MODEL_CHANGED");
 	self:RegisterEvent("DISPLAY_SIZE_CHANGED");
 	self:RegisterEvent("UI_SCALE_CHANGED");
-    -- Put text into the black box
-    EasyTabardDesigner_TestOverlayText:SetText("Can you see this?")
+    -- Text at top should change based on if you are editing guild tabard or personal tabard
+    EasyTabardDesigner_TabardModeText:SetText("Editing Guild Tabard")
 end
 
 -- X button
