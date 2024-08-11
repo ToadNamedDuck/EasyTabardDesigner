@@ -10,7 +10,7 @@ SlashCmdList["TABARDSHOW"] = function(msg, editBox)
     if EasyTabardDesignerFrame:IsVisible() then
         EasyTabardDesignerFrame:Hide();
     else
-        EasyTabardDesignerFrame:Show()
+        EasyTabardDesigner_Open();
     end
 end
 -- OnLoad Function, which just makes sure the frame is not visible when you log in for now.
@@ -24,13 +24,29 @@ EasyTabardDesigner_OnLoad = function(self)
 	self:RegisterEvent("UI_SCALE_CHANGED");
     -- Text at top should change based on if you are editing guild tabard or personal tabard
     EasyTabardDesigner_TabardModeText:SetText("Editing Guild Tabard")
-    EasyTabardDesigner_TabardModel:SetUnit("player");
 end
 
 -- X button
 EasyTabardDesigner_CloseButton = function()
     EasyTabardDesignerFrame:Hide();
     --Needs to stop Tabard Creation
+end
+
+EasyTabardDesigner_Open = function()
+    EasyTabardDesignerFrame:Show();
+    EasyTabardDesigner_UpdateTextures();
+    EasyTabardDesigner_TabardModel:InitializeTabardColors();
+end
+
+function EasyTabardDesigner_UpdateTextures()
+	EasyTabardDesigner_TabardModel:GetUpperEmblemTexture(TabardFrameEmblemTopLeft);
+	EasyTabardDesigner_TabardModel:GetUpperEmblemTexture(TabardFrameEmblemTopRight);
+	EasyTabardDesigner_TabardModel:GetLowerEmblemTexture(TabardFrameEmblemBottomLeft);
+	EasyTabardDesigner_TabardModel:GetLowerEmblemTexture(TabardFrameEmblemBottomRight);
+end
+
+function EasyTabardDesigner_OnEvent(self, event, ...)
+    if event == "UNIT_MODEL_CHANGED" then EasyTabardDesigner_TabardModel:SetUnit("player") end
 end
 
 -- EasyTabardDesigner_IconSelectButton_Click = function(tabardIconId) ?

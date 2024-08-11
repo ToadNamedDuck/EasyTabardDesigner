@@ -15,6 +15,9 @@
             <OnDragStop>
                 self:StopMovingOrSizing();
             </OnDragStop>
+            <OnEvent>
+                EasyTabardDesigner_OnEvent(self, event, ...);
+            </OnEvent>
         </Scripts>
         <Size x="200" y="250"/>
         <Anchors>
