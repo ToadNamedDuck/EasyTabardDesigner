@@ -13,6 +13,7 @@ SlashCmdList["TABARDSHOW"] = function(msg, editBox)
         EasyTabardDesigner_Open();
     end
 end
+
 -- OnLoad Function, which just makes sure the frame is not visible when you log in for now.
 EasyTabardDesigner_OnLoad = function(self)
     EasyTabardDesignerFrame:Hide();
@@ -50,40 +51,8 @@ function EasyTabardDesigner_OnEvent(self, event, ...)
     if event == "UNIT_MODEL_CHANGED" then EasyTabardDesigner_TabardModel:SetUnit("player") end
 end
 
--- Supposedly, every file has an ID, so in theory it is possible to get the name of the file or the id or something, and compile a list of the ids or names. I also kind of want to give them a label, which means naming all 196 icons.
--- I wonder if I can do a get emblem texture from the functions above with a getfile or something
-function EasyTabardDesigner_GetTabardIconIds()
-    local tabardIconIDs = {};
-    local i = 1;
-    --Need to initialize tabard colors so we have a starting point.
-    EasyTabardDesigner_TabardModel:InitializeTabardColors();
-    local IconID = EasyTabardDesigner_TabardModel:GetUpperEmblemFileName(TabardFrameEmblemTopLeft)
-
-    while(true) do
-        if (not tabardIconIDs[i])
-        then
-            tabardIconIDs[i] = {ID = IconID, Name = ""};
-            EasyTabardDesignerTabardModel:CycleVariation(1,1);
-            i = i + 1;
-        else
-            break;
-        end
-    end
-
-    table.sort(tabardIconIDs, function(a,b) return a.ID < b.ID end)
-    return tabardIconIDs;
-end
-
 -- EasyTabardDesigner_IconSelectButton_Click = function(tabardIconId) ?
 -- EasyTabardDesigner_IconColorButton_Click = function(TabardIconColor) ?
 -- EasyTabardDesigner_BorderSelectButton_Click = function(BorderId) ?
 -- EasyTabardDesigner_BorderColorSelectButton_Click = function(BorderColor) ?
 -- EasyTabardDesigner_BackgroundColorSelectButton_Click = function(BackgroundColor) ?
-
-
--- local object1 =  {ID = 01, IconName = ""};
--- local object2 = {ID = 01, IconName = ""};
--- local table = {};
--- table[1] = object1;
--- table[2] = object2;
--- print(table[1].ID == table[2].ID);
