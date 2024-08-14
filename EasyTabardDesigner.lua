@@ -1,9 +1,6 @@
 -- Written by ToadNamedDuck/Jason Harris in (August) 2024
 -- Blizzard's current Tabard UI is terrible, and I want it to look a little more like the collections panel with each option showing up.
 
--- When changing Icons, the right side panels should show a TabardModel for each available icon, each of which keeps the icon color, 
--- current border, border color, and background color.
-
 -- Slash command which makes the xml frame visible
 SLASH_TABARDSHOW1 = "/tabardshow"
 SlashCmdList["TABARDSHOW"] = function(msg, editBox)
@@ -45,6 +42,20 @@ function EasyTabardDesigner_UpdateTextures()
 	EasyTabardDesigner_TabardModel:GetUpperEmblemTexture(TabardFrameEmblemTopRight);
 	EasyTabardDesigner_TabardModel:GetLowerEmblemTexture(TabardFrameEmblemBottomLeft);
 	EasyTabardDesigner_TabardModel:GetLowerEmblemTexture(TabardFrameEmblemBottomRight);
+end
+
+function EasyTabardDesigner_SetEmblemButtonIcon(iconIndex)
+    local trueIndex = tonumber(string.sub(iconIndex, 12, -1));
+    local targetTextFrame = _G[iconIndex .. "_IconName"];
+    local targetTopLeft = _G[iconIndex .. "_EasyTabardDesigner_TabardFrameEmblemTopLeft"];
+    local targetTopRight = _G[iconIndex .. "_EasyTabardDesigner_TabardFrameEmblemTopRight"];
+    local targetBottomLeft = _G[iconIndex .. "_EasyTabardDesigner_TabardFrameEmblemBottomLeft"];
+    local targetBottomRight = _G[iconIndex .. "_EasyTabardDesigner_TabardFrameEmblemBottomRight"];
+    targetTextFrame:SetText(EasyTabardDesigner_TabardTable[trueIndex].Name);
+    targetTopLeft:SetTexture(EasyTabardDesigner_TabardTable[trueIndex].ID + 33);
+    targetTopRight:SetTexture(EasyTabardDesigner_TabardTable[trueIndex].ID + 33);
+    targetBottomLeft:SetTexture(EasyTabardDesigner_TabardTable[trueIndex].ID + 32);
+    targetBottomRight:SetTexture(EasyTabardDesigner_TabardTable[trueIndex].ID + 32);
 end
 
 function EasyTabardDesigner_OnEvent(self, event, ...)

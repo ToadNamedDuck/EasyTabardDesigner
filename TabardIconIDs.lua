@@ -1,4 +1,4 @@
--- Offset for white is 30 for bottom and 31 for top. :3
+-- Offset for white is 32 for bottom and 33 for top. :3
 EasyTabardDesigner_TabardTable = {
     {
         ID = 180398,
