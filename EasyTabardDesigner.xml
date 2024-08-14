@@ -18,7 +18,7 @@
                 <Texture name="$parent_EasyTabardDesigner_TabardFrameEmblemTopRight" alphaMode="ADD">
                     <Size x="100" y="119"/>
                     <Anchors>
-                        <Anchor point="TOPRIGHT" relativeTo="$parent" x="9" y="6"/>
+                        <Anchor point="TOPRIGHT" relativeTo="$parent"/>
                     </Anchors>
                     <TexCoords left="0" right="0.5" top="0" bottom="1"/>
                 </Texture>
