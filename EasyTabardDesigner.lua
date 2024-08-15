@@ -44,13 +44,13 @@ function EasyTabardDesigner_UpdateTextures()
 	EasyTabardDesigner_TabardModel:GetLowerEmblemTexture(TabardFrameEmblemBottomRight);
 end
 
-function EasyTabardDesigner_SetEmblemButtonIcon(iconIndex)
-    local trueIndex = tonumber(string.sub(iconIndex, 12, -1));
-    local targetTextFrame = _G[iconIndex .. "_IconName"];
-    local targetTopLeft = _G[iconIndex .. "_EasyTabardDesigner_TabardFrameEmblemTopLeft"];
-    local targetTopRight = _G[iconIndex .. "_EasyTabardDesigner_TabardFrameEmblemTopRight"];
-    local targetBottomLeft = _G[iconIndex .. "_EasyTabardDesigner_TabardFrameEmblemBottomLeft"];
-    local targetBottomRight = _G[iconIndex .. "_EasyTabardDesigner_TabardFrameEmblemBottomRight"];
+function EasyTabardDesigner_SetEmblemButtonIcon(parentNameIndex)
+    local trueIndex = tonumber(string.sub(parentNameIndex, 12, -1));
+    local targetTextFrame = _G[parentNameIndex .. "_IconName"];
+    local targetTopLeft = _G[parentNameIndex .. "_TabardFrameEmblemTopLeft"];
+    local targetTopRight = _G[parentNameIndex .. "_TabardFrameEmblemTopRight"];
+    local targetBottomLeft = _G[parentNameIndex .. "_TabardFrameEmblemBottomLeft"];
+    local targetBottomRight = _G[parentNameIndex .. "_TabardFrameEmblemBottomRight"];
     targetTextFrame:SetText(EasyTabardDesigner_TabardTable[trueIndex].Name);
     targetTopLeft:SetTexture(EasyTabardDesigner_TabardTable[trueIndex].ID + 33);
     targetTopRight:SetTexture(EasyTabardDesigner_TabardTable[trueIndex].ID + 33);
