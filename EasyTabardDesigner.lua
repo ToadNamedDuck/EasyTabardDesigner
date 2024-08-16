@@ -58,7 +58,7 @@ function EasyTabardDesigner_GetCurrentEmblemIndex()
     --Loop through the table of emblem IDs until we find which emblem this file sits between (inclusively) the objects ID and the RangeEnd
     local n = 1;
     while(n < 197) do
-        if EasyTabardDesigner_TabardTable[n].ID <= emblemUpperID <= EasyTabardDesigner_TabardTable[n].RangeEnd
+        if EasyTabardDesigner_TabardTable[n].ID <= emblemUpperID and emblemUpperID <= EasyTabardDesigner_TabardTable[n].RangeEnd
             then return n
         else
             n = n + 1;
