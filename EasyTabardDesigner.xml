@@ -117,6 +117,18 @@
                 </Anchors>
             </Frame>
 
+            <ScrollFrame name="EasyTabardDesigner_IconScrollFrame" inherits="FauxScrollFrameTemplate">
+                <Size x="300" y="200"/>
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="EasyTabardDesignerFrame" relativePoint="TOPRIGHT"/>
+                </Anchors>
+                <Scripts>
+                    <OnVerticalScroll>
+                        FauxScrollFrame_OnVerticalScroll(50, EasyTabardDesigner_EmblemIconScrollUpdate);
+                    </OnVerticalScroll>
+                </Scripts>
+            </ScrollFrame>
+
         </Frames>
     </Frame>
 </Ui>

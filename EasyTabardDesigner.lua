@@ -5,13 +5,12 @@
 SLASH_TABARDSHOW1 = "/tabardshow"
 SlashCmdList["TABARDSHOW"] = function(msg, editBox)
     if EasyTabardDesignerFrame:IsVisible() then
-        EasyTabardDesignerFrame:Hide();
+        EasyTabardDesignerFrame:CloseButton();
     else
         EasyTabardDesigner_Open();
     end
 end
 
--- OnLoad Function, which just makes sure the frame is not visible when you log in for now.
 EasyTabardDesigner_OnLoad = function(self)
     EasyTabardDesignerFrame:Hide();
     -- Register Events we want to listen for, which are just copied from the original tabard frame
@@ -20,7 +19,7 @@ EasyTabardDesigner_OnLoad = function(self)
 	self:RegisterEvent("UNIT_MODEL_CHANGED");
 	self:RegisterEvent("DISPLAY_SIZE_CHANGED");
 	self:RegisterEvent("UI_SCALE_CHANGED");
-    -- Text at top should change based on if you are editing guild tabard or personal tabard
+    -- Text at top should change based on if you are editing guild tabard or personal tabard. Needs to be inside of the open function
     EasyTabardDesigner_TabardModeText:SetText("Editing Guild Tabard")
 end
 
@@ -36,14 +35,10 @@ EasyTabardDesigner_Open = function()
     EasyTabardDesigner_TabardModel:InitializeTabardColors();
 end
 
--- There are supposed to be 4 elements which hold a quadrant of the guild emblem. The param is the name of the quadrant, and updatetextures sets all 4 of those, and that should theoretically be in a frames overlay level.
-function EasyTabardDesigner_UpdateTextures()
-	EasyTabardDesigner_TabardModel:GetUpperEmblemTexture(TabardFrameEmblemTopLeft);
-	EasyTabardDesigner_TabardModel:GetUpperEmblemTexture(TabardFrameEmblemTopRight);
-	EasyTabardDesigner_TabardModel:GetLowerEmblemTexture(TabardFrameEmblemBottomLeft);
-	EasyTabardDesigner_TabardModel:GetLowerEmblemTexture(TabardFrameEmblemBottomRight);
-end
+--Populates all of the emblem icons in the emblem select list.
 
+
+--Sets the Emblem in each of the display buttons
 function EasyTabardDesigner_SetEmblemButtonIcon(parentNameIndex)
     local trueIndex = tonumber(string.sub(parentNameIndex, 12, -1));
     local targetTextFrame = _G[parentNameIndex .. "_IconName"];
@@ -52,10 +47,29 @@ function EasyTabardDesigner_SetEmblemButtonIcon(parentNameIndex)
     local targetBottomLeft = _G[parentNameIndex .. "_TabardFrameEmblemBottomLeft"];
     local targetBottomRight = _G[parentNameIndex .. "_TabardFrameEmblemBottomRight"];
     targetTextFrame:SetText(EasyTabardDesigner_TabardTable[trueIndex].Name);
-    targetTopLeft:SetTexture(EasyTabardDesigner_TabardTable[trueIndex].ID + 33);
-    targetTopRight:SetTexture(EasyTabardDesigner_TabardTable[trueIndex].ID + 33);
-    targetBottomLeft:SetTexture(EasyTabardDesigner_TabardTable[trueIndex].ID + 32);
-    targetBottomRight:SetTexture(EasyTabardDesigner_TabardTable[trueIndex].ID + 32);
+    targetTopLeft:SetTexture(EasyTabardDesigner_TabardTable[trueIndex].RangeEnd);
+    targetTopRight:SetTexture(EasyTabardDesigner_TabardTable[trueIndex].RangeEnd);
+    targetBottomLeft:SetTexture(EasyTabardDesigner_TabardTable[trueIndex].RangeEnd - 1);
+    targetBottomRight:SetTexture(EasyTabardDesigner_TabardTable[trueIndex].RangeEnd - 1);
+end
+
+--Determines which emblem index is currently used by the player, used for calculating the offset
+function EasyTabardDesigner_GetCurrentEmblemIndex()
+    local emblemUpperID = EasyTabardDesigner_TabardModel:GetUpperEmblemEmblemFile();
+    --Loop through the table of emblem IDs until we find which emblem this file sits between (inclusively) the objects ID and the RangeEnd
+    local n = 1;
+    while(n < 197) do
+        if EasyTabardDesigner_TabardTable[n].ID <= emblemUpperID <= EasyTabardDesigner_TabardTable[n].RangeEnd
+            then return n
+        else
+            n = n + 1;
+        end
+    end
+end
+
+--Function for updating scrollbar in emblem icon select
+function EasyTabardDesigner_EmblemIconScrollUpdate()
+    FauxScrollFrame_Update(EasyTabardDesigner_IconScrollFrame,196,33,50);
 end
 
 function EasyTabardDesigner_OnEvent(self, event, ...)

@@ -1,4 +1,4 @@
--- Offset for white is 32 for bottom and 33 for top. :3
+-- Offset for yellow is 32 for bottom and 33 for top. Offset for white is: 
 EasyTabardDesigner_TabardTable = {
     {
         ID = 180398,
