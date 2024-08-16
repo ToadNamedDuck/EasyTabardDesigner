@@ -31,7 +31,6 @@ end
 
 EasyTabardDesigner_Open = function()
     EasyTabardDesignerFrame:Show();
-    EasyTabardDesigner_UpdateTextures();
     EasyTabardDesigner_TabardModel:InitializeTabardColors();
 end
 

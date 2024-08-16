@@ -16,37 +16,37 @@
             </Layer>
             <Layer level="OVERLAY">
                 <Texture name="$parent_TabardFrameEmblemTopRight" alphaMode="ADD">
-                    <Size x="100" y="119"/>
+                    <Size x="25" y="25"/>
                     <Anchors>
                         <Anchor point="TOPRIGHT" relativeTo="$parent"/>
                     </Anchors>
                     <TexCoords left="0" right="0.5" top="0" bottom="1"/>
                 </Texture>
                 <Texture name="$parent_TabardFrameEmblemBottomRight" alphaMode="ADD">
-                    <Size x="100" y="74"/>
+                    <Size x="25" y="25"/>
                     <Anchors>
                         <Anchor point="TOP" relativeTo="$parent_TabardFrameEmblemTopRight" relativePoint="BOTTOM"/>
                     </Anchors>
                     <TexCoords left="0" right="0.5" top="0" bottom="1"/>
                 </Texture>
                 <Texture name="$parent_TabardFrameEmblemTopLeft" alphaMode="ADD">
-                    <Size x="100" y="119"/>
+                    <Size x="25" y="25"/>
                     <Anchors>
                         <Anchor point="RIGHT" relativeTo="$parent_TabardFrameEmblemTopRight" relativePoint="LEFT" x="0" y="0"/>
                     </Anchors>
                     <TexCoords left="0.5" right="0" top="0" bottom="1"/>
                 </Texture>
                 <Texture name="$parent_TabardFrameEmblemBottomLeft" alphaMode="ADD">
-                    <Size x="100" y="74"/>
+                    <Size x="25" y="25"/>
                     <Anchors>
                         <Anchor point="TOP" relativeTo="$parent_TabardFrameEmblemTopLeft" relativePoint="BOTTOM"/>
                     </Anchors>
                     <TexCoords left="0.5" right="0" top="0" bottom="1"/>
                 </Texture>
-                <FontString name="$parent_IconName" inherits="GameFontNormal">
-                    <Size x="200" y="16"/>
+                <FontString name="$parent_IconName" inherits="GameFontNormalSmall">
+                    <Size x="50" y="25"/>
                     <Anchors>
-                        <Anchor point="TOPLEFT" relativeTo="$parent_TabardFrameEmblemBottomLeft" relativePoint="BOTTOMLEFT"></Anchor>
+                        <Anchor point="TOPLEFT" relativeTo="$parent_TabardFrameEmblemTopLeft" relativePoint="TOPLEFT" y="4"></Anchor>
                     </Anchors>
                 </FontString>
             </Layer>
@@ -110,13 +110,6 @@
                 </Anchors>
             </TabardModel>
 
-            <Frame name="TabardIcon_1" inherits="EasyTabardDesigner_IconSelectTemplate">
-                <Size x="200" y="216"/>
-                <Anchors>
-                    <Anchor point="TOPLEFT" relativeTo="EasyTabardDesignerFrame" relativePoint="TOPRIGHT"/>
-                </Anchors>
-            </Frame>
-
             <ScrollFrame name="EasyTabardDesigner_IconScrollFrame" inherits="FauxScrollFrameTemplate">
                 <Size x="300" y="200"/>
                 <Anchors>
@@ -127,6 +120,14 @@
                         FauxScrollFrame_OnVerticalScroll(50, EasyTabardDesigner_EmblemIconScrollUpdate);
                     </OnVerticalScroll>
                 </Scripts>
+                <Frames>
+                    <Frame name="TabardIcon_1" inherits="EasyTabardDesigner_IconSelectTemplate">
+                        <Size x="50" y="50"/>
+                        <Anchors>
+                            <Anchor point="TOPLEFT" relativeTo="EasyTabardDesignerFrame" relativePoint="TOPRIGHT"/>
+                        </Anchors>
+                    </Frame>
+                </Frames>
             </ScrollFrame>
 
         </Frames>
