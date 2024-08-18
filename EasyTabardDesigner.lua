@@ -37,7 +37,7 @@ end
 --Populates all of the emblem icons in the emblem select list.
 
 
---Sets the Emblem in each of the display buttons
+--Sets the Emblem in each of the display buttons <NEEDS REWORK>
 function EasyTabardDesigner_SetEmblemButtonIcon(parentNameIndex)
     local trueIndex = tonumber(string.sub(parentNameIndex, 12, -1));
     local targetTextFrame = _G[parentNameIndex .. "_IconName"];
@@ -66,9 +66,24 @@ function EasyTabardDesigner_GetCurrentEmblemIndex()
     end
 end
 
---Function for updating scrollbar in emblem icon select
-function EasyTabardDesigner_EmblemIconScrollUpdate()
-    FauxScrollFrame_Update(EasyTabardDesigner_IconScrollFrame,196,33,50);
+--OnValueChanged for slider
+function EasyTabardDesigner_SliderUpdate()
+    
+end
+
+--Function that calculates which icons are shown on the rows. 33 rows total, 6 icons per row. 5 rows shown. 
+function EasyTabardDesigner_UpdateRows(sliderValue)
+    --sliderValue determines which row to show at the top.
+    EasyTabardDesigner_SetRow(1, sliderValue);
+    EasyTabardDesigner_SetRow(2, sliderValue);
+    EasyTabardDesigner_SetRow(3, sliderValue);
+    EasyTabardDesigner_SetRow(4, sliderValue);
+    EasyTabardDesigner_SetRow(5, sliderValue);
+end
+
+--Update a row of buttons in the slider menu
+function EasyTabardDesigner_SetRow(rowValue, sliderValue)
+    
 end
 
 function EasyTabardDesigner_OnEvent(self, event, ...)

@@ -142,9 +142,41 @@
                 <Anchors>
                     <Anchor point="TOPLEFT" relativeTo="EasyTabardDesignerFrame" relativePoint="TOPRIGHT"/>
                 </Anchors>
+                <Frames>
+                    <Frame name="$parent_Row1">
+                        <Size x="300" y="50"/>
+                        <Anchors>
+                            <Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="EasyTabardDesigner_IconFrame"/>
+                        </Anchors>
+                    </Frame>
+                    <Frame name="$parent_Row2">
+                        <Size x="300" y="50"/>
+                        <Anchors>
+                            <Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parent_Row1"/>
+                        </Anchors>
+                    </Frame>
+                    <Frame name="$parent_Row3">
+                        <Size x="300" y="50"/>
+                        <Anchors>
+                            <Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parent_Row2"/>
+                        </Anchors>
+                    </Frame>
+                    <Frame name="$parent_Row4">
+                        <Size x="300" y="50"/>
+                        <Anchors>
+                            <Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parent_Row3"/>
+                        </Anchors>
+                    </Frame>
+                    <Frame name="$parent_Row5">
+                        <Size x="300" y="50"/>
+                        <Anchors>
+                            <Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parent_Row4"/>
+                        </Anchors>
+                    </Frame>
+                </Frames>
             </Frame>
 
-            <Slider name="EasyTabardDesigner_SliderTrack" orientation="VERTICAL" enableMouse="true" virtual="true" minValue="1" maxValue="33" stepsPerPage="3" defaultValue="1">
+            <Slider name="EasyTabardDesigner_SliderTrack" orientation="VERTICAL" enableMouse="true" virtual="true" minValue="1" maxValue="33" valueStep="1" stepsPerPage="3" defaultValue="1">
                 <Size x="32" y="250"/>
                 <Layers>
                     <Layer level="BACKGROUND">
@@ -161,7 +193,7 @@
                 </Anchors>
                 <Scripts>
                     <OnValueChanged>
-                        <!-- EasyTabardDesigner_SliderFrame_OnValueChanged(self, value, userInput); -->
+                        print(EasyTabardDesigner_SliderTrack:GetValue());
                     </OnValueChanged>
                 </Scripts>
             </Slider>
