@@ -54,7 +54,7 @@ end
 
 --Determines which emblem index is currently used by the player, used for calculating the offset
 function EasyTabardDesigner_GetCurrentEmblemIndex()
-    local emblemUpperID = EasyTabardDesigner_TabardModel:GetUpperEmblemEmblemFile();
+    local emblemUpperID = EasyTabardDesigner_TabardModel:GetUpperEmblemFile();
     --Loop through the table of emblem IDs until we find which emblem this file sits between (inclusively) the objects ID and the RangeEnd
     local n = 1;
     while(n < 197) do

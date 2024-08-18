@@ -110,7 +110,7 @@
                 </Anchors>
             </TabardModel>
 
-            <ScrollFrame name="EasyTabardDesigner_IconScrollFrame" inherits="FauxScrollFrameTemplate">
+            <!-- <ScrollFrame name="EasyTabardDesigner_IconScrollFrame" inherits="FauxScrollFrameTemplate">
                 <Size x="300" y="200"/>
                 <Anchors>
                     <Anchor point="TOPLEFT" relativeTo="EasyTabardDesignerFrame" relativePoint="TOPRIGHT"/>
@@ -128,7 +128,43 @@
                         </Anchors>
                     </Frame>
                 </Frames>
-            </ScrollFrame>
+            </ScrollFrame> -->
+
+            <Frame name="EasyTabardDesigner_IconFrame">
+                <Size x="300" y="250"/>
+                <Layers>
+                    <Layer level="BACKGROUND">
+                        <Texture setAllPoints="true">
+                            <Color r="0" g="0" b="0" a="0.4"/>
+                        </Texture>
+                    </Layer>
+                </Layers>
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="EasyTabardDesignerFrame" relativePoint="TOPRIGHT"/>
+                </Anchors>
+            </Frame>
+
+            <Slider name="EasyTabardDesigner_SliderTrack" orientation="VERTICAL" enableMouse="true" virtual="true" minValue="1" maxValue="33" stepsPerPage="3" defaultValue="1">
+                <Size x="32" y="250"/>
+                <Layers>
+                    <Layer level="BACKGROUND">
+                        <Texture setAllPoints="true">
+                            <Color r="0" g="0" b="0" a="0.7"/>
+                        </Texture>
+                    </Layer>
+                </Layers>
+                <ThumbTexture name="$parentThumb" file="Interface\Buttons\UI-SliderBar-Button-Vertical">
+                    <Size x="32" y="32"/>
+                </ThumbTexture>
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="EasyTabardDesigner_IconFrame" relativePoint="TOPRIGHT"/>
+                </Anchors>
+                <Scripts>
+                    <OnValueChanged>
+                        <!-- EasyTabardDesigner_SliderFrame_OnValueChanged(self, value, userInput); -->
+                    </OnValueChanged>
+                </Scripts>
+            </Slider>
 
         </Frames>
     </Frame>
