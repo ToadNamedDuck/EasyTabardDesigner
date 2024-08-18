@@ -74,16 +74,19 @@ end
 --Function that calculates which icons are shown on the rows. 33 rows total, 6 icons per row. 5 rows shown. 
 function EasyTabardDesigner_UpdateRows(sliderValue)
     --sliderValue determines which row to show at the top.
-    EasyTabardDesigner_SetRow(1, sliderValue);
-    EasyTabardDesigner_SetRow(2, sliderValue);
-    EasyTabardDesigner_SetRow(3, sliderValue);
-    EasyTabardDesigner_SetRow(4, sliderValue);
-    EasyTabardDesigner_SetRow(5, sliderValue);
+    local flooredValue = math.floor(sliderValue)
+    EasyTabardDesigner_SetRow(1, flooredValue);
+    EasyTabardDesigner_SetRow(2, flooredValue);
+    EasyTabardDesigner_SetRow(3, flooredValue);
+    EasyTabardDesigner_SetRow(4, flooredValue);
+    EasyTabardDesigner_SetRow(5, flooredValue);
 end
 
 --Update a row of buttons in the slider menu
 function EasyTabardDesigner_SetRow(rowValue, sliderValue)
-    
+    --sliderValue is floored before this point.
+    if rowValue > 5 then rowValue = 5 end;
+    if rowValue < 1 then rowValue = 1 end;
 end
 
 function EasyTabardDesigner_OnEvent(self, event, ...)

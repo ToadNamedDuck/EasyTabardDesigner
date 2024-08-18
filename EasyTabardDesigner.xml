@@ -3,6 +3,7 @@
     <Script file="TabardIconIDs.lua"/>
     <!-- Template Icon Display/Select Button -->
      <Frame name="EasyTabardDesigner_IconSelectTemplate" virtual="true">
+        <Size x="50" y="50"/>
         <Scripts>
             <OnLoad>
                 EasyTabardDesigner_SetEmblemButtonIcon(self:GetName());
@@ -52,6 +53,47 @@
             </Layer>
         </Layers>
      </Frame>
+
+     <!-- Icon Row Template -->
+    <Frame name="EasyTabardDesigner_RowTemplate" virtual="true">
+        <Size x="300" y="50"/>
+        <Anchors>
+            <Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="$parent"/>
+        </Anchors>
+        <Frames>
+            <Frame name="$parent_Icon1" inherits="EasyTabardDesigner_IconSelectTemplate">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="$parent"/>
+                </Anchors>
+            </Frame>
+            <Frame name="$parent_Icon2" inherits="EasyTabardDesigner_IconSelectTemplate">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativePoint="TOPRIGHT" relativeTo="$parent_Icon1"/>
+                </Anchors>
+            </Frame>
+            <Frame name="$parent_Icon3" inherits="EasyTabardDesigner_IconSelectTemplate">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativePoint="TOPRIGHT" relativeTo="$parent_Icon2"/>
+                </Anchors>
+            </Frame>
+            <Frame name="$parent_Icon4" inherits="EasyTabardDesigner_IconSelectTemplate">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativePoint="TOPRIGHT" relativeTo="$parent_Icon3"/>
+                </Anchors>
+            </Frame>
+            <Frame name="$parent_Icon5" inherits="EasyTabardDesigner_IconSelectTemplate">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativePoint="TOPRIGHT" relativeTo="$parent_Icon4"/>
+                </Anchors>
+            </Frame>
+            <Frame name="$parent_Icon6" inherits="EasyTabardDesigner_IconSelectTemplate">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativePoint="TOPRIGHT" relativeTo="$parent_Icon5"/>
+                </Anchors>
+            </Frame>
+        </Frames>
+    </Frame>
+
     <!-- Template Color/Other Select Button -->
     <!-- Other Template Accept/Cancel Button -->
     <!-- Main Frame -->
@@ -143,32 +185,24 @@
                     <Anchor point="TOPLEFT" relativeTo="EasyTabardDesignerFrame" relativePoint="TOPRIGHT"/>
                 </Anchors>
                 <Frames>
-                    <Frame name="$parent_Row1">
-                        <Size x="300" y="50"/>
-                        <Anchors>
-                            <Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="EasyTabardDesigner_IconFrame"/>
-                        </Anchors>
+                    <Frame name="$parent_Row1" inherits="EasyTabardDesigner_RowTemplate">
                     </Frame>
-                    <Frame name="$parent_Row2">
-                        <Size x="300" y="50"/>
+                    <Frame name="$parent_Row2" inherits="EasyTabardDesigner_RowTemplate">
                         <Anchors>
                             <Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parent_Row1"/>
                         </Anchors>
                     </Frame>
-                    <Frame name="$parent_Row3">
-                        <Size x="300" y="50"/>
+                    <Frame name="$parent_Row3" inherits="EasyTabardDesigner_RowTemplate">
                         <Anchors>
                             <Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parent_Row2"/>
                         </Anchors>
                     </Frame>
-                    <Frame name="$parent_Row4">
-                        <Size x="300" y="50"/>
+                    <Frame name="$parent_Row4" inherits="EasyTabardDesigner_RowTemplate">
                         <Anchors>
                             <Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parent_Row3"/>
                         </Anchors>
                     </Frame>
-                    <Frame name="$parent_Row5">
-                        <Size x="300" y="50"/>
+                    <Frame name="$parent_Row5" inherits="EasyTabardDesigner_RowTemplate">
                         <Anchors>
                             <Anchor point="TOPLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parent_Row4"/>
                         </Anchors>
