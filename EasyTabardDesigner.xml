@@ -205,7 +205,7 @@
                 </Frames>
             </Frame>
 
-            <Slider name="EasyTabardDesigner_SliderTrack" orientation="VERTICAL" enableMouse="true" virtual="true" minValue="1" maxValue="33" valueStep="1" stepsPerPage="3" defaultValue="1">
+            <Slider name="EasyTabardDesigner_SliderTrack" orientation="VERTICAL" enableMouse="true" virtual="true" minValue="1" maxValue="29" valueStep="1" stepsPerPage="3" defaultValue="1">
                 <Size x="32" y="250"/>
                 <Layers>
                     <Layer level="BACKGROUND">

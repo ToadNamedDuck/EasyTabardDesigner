@@ -133,7 +133,7 @@ EasyTabardDesigner_TabardTable = {
     {
         ID = 183662,
         Name = "Bag of Money",
-        RangeEnd = 183635
+        RangeEnd = 183695
     },
     {
         ID = 183696,
@@ -398,7 +398,7 @@ EasyTabardDesigner_TabardTable = {
     {
         ID = 185464,
         Name = "Satisfied Cat",
-        RangeEnd = 185197
+        RangeEnd = 185497
     },
     {
         ID = 185498,
@@ -979,6 +979,16 @@ EasyTabardDesigner_TabardTable = {
         ID = 467517,
         Name = "Abstract",
         RangeEnd = 467550
+    },
+    {
+        ID = nil,
+        Name = "",
+        RangeEnd = nil
+    },
+    {
+        ID = nil,
+        Name = "",
+        RangeEnd = nil
     }
 }
 

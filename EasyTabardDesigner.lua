@@ -11,7 +11,6 @@ SlashCmdList["TABARDSHOW"] = function(msg, editBox)
     end
 end
 
-local topRowButton1ID = 1;
 local previousSliderValue = 1;
 
 EasyTabardDesigner_OnLoad = function(self)
@@ -55,11 +54,19 @@ function EasyTabardDesigner_SetEmblemButtonIcon(button)
     else
         tableObj = EasyTabardDesigner_TabardTable[1];
     end
-    buttonLabel:SetText(tableObj.Name);
-    buttonTopLeft:SetTexture(tableObj.RangeEnd);
-    buttonTopRight:SetTexture(tableObj.RangeEnd);
-    buttonBottomLeft:SetTexture(tableObj.RangeEnd - 1);
-    buttonBottomRight:SetTexture(tableObj.RangeEnd - 1);
+    if (tabardID == 197 or tabardID == 198) then 
+        buttonLabel:SetText("");
+        buttonTopLeft:SetTexture(nil);
+        buttonTopRight:SetTexture(nil);
+        buttonBottomLeft:SetTexture(nil);
+        buttonBottomRight:SetTexture(nil);
+    else
+        buttonLabel:SetText(tableObj.Name);
+        buttonTopLeft:SetTexture(tableObj.RangeEnd);
+        buttonTopRight:SetTexture(tableObj.RangeEnd);
+        buttonBottomLeft:SetTexture(tableObj.RangeEnd - 1);
+        buttonBottomRight:SetTexture(tableObj.RangeEnd - 1);
+    end
 end
 
 --Determines which emblem index is currently used by the player, used for calculating the offset
@@ -104,18 +111,12 @@ function EasyTabardDesigner_SetRow(rowValue, sliderValue)
     local button5 = _G["EasyTabardDesigner_IconFrame_Row"..tostring(rowValue).."_Icon5"]
     local button6 = _G["EasyTabardDesigner_IconFrame_Row"..tostring(rowValue).."_Icon6"]
 
-    --Check if sliderValue is > or < previousSliderValue to determine whether to add or subtract 6 from topRowButton1ID
-    local offset = topRowButton1ID;
-    if(sliderValue > previousSliderValue) then offset = offset + 6
-    else offset = offset - 6 end;
-    if(rowValue ~= 1) then offset = offset + (6*rowValue) end;
-    if previousSliderValue == 0 then offset = 1 end;
+    local offset = 1 + (sliderValue - 1) * 6 + (rowValue - 1) * 6;--Thanks ChatGPT
+    if previousSliderValue < 1 then offset = 1 end;
 
     if (previousSliderValue == sliderValue) and (previousSliderValue ~= 1) then return 0 end;
     EasyTabardDesigner_SetRowButtonsIdAndIcon(button1, button2, button3, button4, button5, button6, offset)
-    if rowValue == 1 then topRowButton1ID = button1:GetID()
-         print(topRowButton1ID);
-    end;
+
     if rowValue == 5 then previousSliderValue = sliderValue end;
 
 end
@@ -129,17 +130,17 @@ function EasyTabardDesigner_SetRowButtonsIdAndIcon(button1, button2, button3, bu
     local button5ID = IdToSet + 4;
     local button6ID = IdToSet + 5;
 
-    if button1ID > 196 then button1ID = 196 end;
+    if button1ID > 198 then button1ID = 198 end;
     if button1ID < 1 then button1ID = 1 end;
-    if button2ID > 196 then button2ID = 196 end;
+    if button2ID > 198 then button2ID = 198 end;
     if button2ID < 2 then button2ID = 2 end;
-    if button3ID > 196 then button3ID = 196 end;
+    if button3ID > 198 then button3ID = 198 end;
     if button3ID < 3 then button3ID = 3 end;
-    if button4ID > 196 then button4ID = 196 end;
+    if button4ID > 198 then button4ID = 198 end;
     if button4ID < 4 then button4ID = 4 end;
-    if button5ID > 196 then button5ID = 196 end;
+    if button5ID > 198 then button5ID = 198 end;
     if button5ID < 5 then button5ID = 5 end;
-    if button6ID > 196 then button6ID = 196 end;
+    if button6ID > 198 then button6ID = 198 end;
     if button6ID < 6 then button6ID = 6 end;
 
     button1:SetID(button1ID);
