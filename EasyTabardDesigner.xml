@@ -4,11 +4,6 @@
     <!-- Template Icon Display/Select Button -->
      <Frame name="EasyTabardDesigner_IconSelectTemplate" virtual="true">
         <Size x="50" y="50"/>
-        <Scripts>
-            <OnLoad>
-                EasyTabardDesigner_SetEmblemButtonIcon(self:GetName());
-            </OnLoad>
-        </Scripts>
         <Layers>
             <Layer level="BACKGROUND">
                 <Texture setAllPoints="true">
@@ -227,7 +222,7 @@
                 </Anchors>
                 <Scripts>
                     <OnValueChanged>
-                        print(EasyTabardDesigner_SliderTrack:GetValue());
+                        EasyTabardDesigner_SliderUpdate();
                     </OnValueChanged>
                 </Scripts>
             </Slider>

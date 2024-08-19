@@ -38,18 +38,37 @@ end
 
 
 --Sets the Emblem in each of the display buttons <NEEDS REWORK>
-function EasyTabardDesigner_SetEmblemButtonIcon(parentNameIndex)
-    local trueIndex = tonumber(string.sub(parentNameIndex, 12, -1));
-    local targetTextFrame = _G[parentNameIndex .. "_IconName"];
-    local targetTopLeft = _G[parentNameIndex .. "_TabardFrameEmblemTopLeft"];
-    local targetTopRight = _G[parentNameIndex .. "_TabardFrameEmblemTopRight"];
-    local targetBottomLeft = _G[parentNameIndex .. "_TabardFrameEmblemBottomLeft"];
-    local targetBottomRight = _G[parentNameIndex .. "_TabardFrameEmblemBottomRight"];
-    targetTextFrame:SetText(EasyTabardDesigner_TabardTable[trueIndex].Name);
-    targetTopLeft:SetTexture(EasyTabardDesigner_TabardTable[trueIndex].RangeEnd);
-    targetTopRight:SetTexture(EasyTabardDesigner_TabardTable[trueIndex].RangeEnd);
-    targetBottomLeft:SetTexture(EasyTabardDesigner_TabardTable[trueIndex].RangeEnd - 1);
-    targetBottomRight:SetTexture(EasyTabardDesigner_TabardTable[trueIndex].RangeEnd - 1);
+function EasyTabardDesigner_SetEmblemButtonIcon(button)
+    local tabardID = button:GetID();
+    local frameName = button:GetName();
+    local buttonLabel = _G[frameName .. "_IconName"]
+    local buttonTopLeft = _G[frameName .. "_TabardFrameEmblemTopLeft"];
+    local buttonTopRight = _G[frameName .. "_TabardFrameEmblemTopRight"];
+    local buttonBottomLeft = _G[frameName .. "_TabardFrameEmblemBottomLeft"];
+    local buttonBottomRight = _G[frameName .. "_TabardFrameEmblemBottomRight"];
+    local tableObj;
+    if tabardID > 0 then
+        tableObj = EasyTabardDesigner_TabardTable[tabardID];
+    else
+        tableObj = EasyTabardDesigner_TabardTable[1];
+    end
+    buttonLabel:SetText(tableObj.Name);
+    buttonTopLeft:SetTexture(tableObj.RangeEnd);
+    buttonTopRight:SetTexture(tableObj.RangeEnd);
+    buttonBottomLeft:SetTexture(tableObj.RangeEnd - 1);
+    buttonBottomRight:SetTexture(tableObj.RangeEnd - 1);
+
+    -- local trueIndex = tonumber(string.sub(parentNameIndex, 12, -1));
+    -- local targetTextFrame = _G[parentNameIndex .. "_IconName"];
+    -- local targetTopLeft = _G[parentNameIndex .. "_TabardFrameEmblemTopLeft"];
+    -- local targetTopRight = _G[parentNameIndex .. "_TabardFrameEmblemTopRight"];
+    -- local targetBottomLeft = _G[parentNameIndex .. "_TabardFrameEmblemBottomLeft"];
+    -- local targetBottomRight = _G[parentNameIndex .. "_TabardFrameEmblemBottomRight"];
+    -- targetTextFrame:SetText(EasyTabardDesigner_TabardTable[trueIndex].Name);
+    -- targetTopLeft:SetTexture(EasyTabardDesigner_TabardTable[trueIndex].RangeEnd);
+    -- targetTopRight:SetTexture(EasyTabardDesigner_TabardTable[trueIndex].RangeEnd);
+    -- targetBottomLeft:SetTexture(EasyTabardDesigner_TabardTable[trueIndex].RangeEnd - 1);
+    -- targetBottomRight:SetTexture(EasyTabardDesigner_TabardTable[trueIndex].RangeEnd - 1);
 end
 
 --Determines which emblem index is currently used by the player, used for calculating the offset
@@ -68,18 +87,17 @@ end
 
 --OnValueChanged for slider
 function EasyTabardDesigner_SliderUpdate()
-    
+    local value = math.floor(EasyTabardDesigner_SliderTrack:GetValue());
+    EasyTabardDesigner_UpdateRows(value);
 end
 
 --Function that calculates which icons are shown on the rows. 33 rows total, 6 icons per row. 5 rows shown. 
 function EasyTabardDesigner_UpdateRows(sliderValue)
-    --sliderValue determines which row to show at the top.
-    local flooredValue = math.floor(sliderValue)
-    EasyTabardDesigner_SetRow(1, flooredValue);
-    EasyTabardDesigner_SetRow(2, flooredValue);
-    EasyTabardDesigner_SetRow(3, flooredValue);
-    EasyTabardDesigner_SetRow(4, flooredValue);
-    EasyTabardDesigner_SetRow(5, flooredValue);
+    EasyTabardDesigner_SetRow(1, sliderValue);
+    EasyTabardDesigner_SetRow(2, sliderValue);
+    EasyTabardDesigner_SetRow(3, sliderValue);
+    EasyTabardDesigner_SetRow(4, sliderValue);
+    EasyTabardDesigner_SetRow(5, sliderValue);
 end
 
 --Update a row of buttons in the slider menu
@@ -87,6 +105,26 @@ function EasyTabardDesigner_SetRow(rowValue, sliderValue)
     --sliderValue is floored before this point.
     if rowValue > 5 then rowValue = 5 end;
     if rowValue < 1 then rowValue = 1 end;
+
+    local button1 = _G["EasyTabardDesigner_IconFrame_Row"..tostring(rowValue).."_Icon1"]
+    local button2 = _G["EasyTabardDesigner_IconFrame_Row"..tostring(rowValue).."_Icon2"]
+    local button3 = _G["EasyTabardDesigner_IconFrame_Row"..tostring(rowValue).."_Icon3"]
+    local button4 = _G["EasyTabardDesigner_IconFrame_Row"..tostring(rowValue).."_Icon4"]
+    local button5 = _G["EasyTabardDesigner_IconFrame_Row"..tostring(rowValue).."_Icon5"]
+    local button6 = _G["EasyTabardDesigner_IconFrame_Row"..tostring(rowValue).."_Icon6"]
+
+    button1:SetID(rowValue * sliderValue);
+    EasyTabardDesigner_SetEmblemButtonIcon(button1);
+    button2:SetID((rowValue * sliderValue) + 1);
+    EasyTabardDesigner_SetEmblemButtonIcon(button2);
+    button3:SetID((rowValue * sliderValue) + 2);
+    EasyTabardDesigner_SetEmblemButtonIcon(button3);
+    button4:SetID((rowValue * sliderValue) + 3);
+    EasyTabardDesigner_SetEmblemButtonIcon(button4);
+    button5:SetID((rowValue * sliderValue) + 4);
+    EasyTabardDesigner_SetEmblemButtonIcon(button5);
+    button6:SetID((rowValue * sliderValue) + 5);
+    EasyTabardDesigner_SetEmblemButtonIcon(button6);
 end
 
 function EasyTabardDesigner_OnEvent(self, event, ...)
