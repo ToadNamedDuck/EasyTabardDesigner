@@ -11,6 +11,9 @@ SlashCmdList["TABARDSHOW"] = function(msg, editBox)
     end
 end
 
+local topRowButton1ID = 1;
+local previousSliderValue = 1;
+
 EasyTabardDesigner_OnLoad = function(self)
     EasyTabardDesignerFrame:Hide();
     -- Register Events we want to listen for, which are just copied from the original tabard frame
@@ -37,7 +40,7 @@ end
 --Populates all of the emblem icons in the emblem select list.
 
 
---Sets the Emblem in each of the display buttons <NEEDS REWORK>
+--Sets the Emblem in each of the display buttons
 function EasyTabardDesigner_SetEmblemButtonIcon(button)
     local tabardID = button:GetID();
     local frameName = button:GetName();
@@ -57,18 +60,6 @@ function EasyTabardDesigner_SetEmblemButtonIcon(button)
     buttonTopRight:SetTexture(tableObj.RangeEnd);
     buttonBottomLeft:SetTexture(tableObj.RangeEnd - 1);
     buttonBottomRight:SetTexture(tableObj.RangeEnd - 1);
-
-    -- local trueIndex = tonumber(string.sub(parentNameIndex, 12, -1));
-    -- local targetTextFrame = _G[parentNameIndex .. "_IconName"];
-    -- local targetTopLeft = _G[parentNameIndex .. "_TabardFrameEmblemTopLeft"];
-    -- local targetTopRight = _G[parentNameIndex .. "_TabardFrameEmblemTopRight"];
-    -- local targetBottomLeft = _G[parentNameIndex .. "_TabardFrameEmblemBottomLeft"];
-    -- local targetBottomRight = _G[parentNameIndex .. "_TabardFrameEmblemBottomRight"];
-    -- targetTextFrame:SetText(EasyTabardDesigner_TabardTable[trueIndex].Name);
-    -- targetTopLeft:SetTexture(EasyTabardDesigner_TabardTable[trueIndex].RangeEnd);
-    -- targetTopRight:SetTexture(EasyTabardDesigner_TabardTable[trueIndex].RangeEnd);
-    -- targetBottomLeft:SetTexture(EasyTabardDesigner_TabardTable[trueIndex].RangeEnd - 1);
-    -- targetBottomRight:SetTexture(EasyTabardDesigner_TabardTable[trueIndex].RangeEnd - 1);
 end
 
 --Determines which emblem index is currently used by the player, used for calculating the offset
@@ -102,7 +93,7 @@ end
 
 --Update a row of buttons in the slider menu
 function EasyTabardDesigner_SetRow(rowValue, sliderValue)
-    --sliderValue is floored before this point.
+
     if rowValue > 5 then rowValue = 5 end;
     if rowValue < 1 then rowValue = 1 end;
 
@@ -113,17 +104,55 @@ function EasyTabardDesigner_SetRow(rowValue, sliderValue)
     local button5 = _G["EasyTabardDesigner_IconFrame_Row"..tostring(rowValue).."_Icon5"]
     local button6 = _G["EasyTabardDesigner_IconFrame_Row"..tostring(rowValue).."_Icon6"]
 
-    button1:SetID(rowValue * sliderValue);
+    --Check if sliderValue is > or < previousSliderValue to determine whether to add or subtract 6 from topRowButton1ID
+    local offset = topRowButton1ID;
+    if(sliderValue > previousSliderValue) then offset = offset + 6
+    else offset = offset - 6 end;
+    if(rowValue ~= 1) then offset = offset + (6*rowValue) end;
+    if previousSliderValue == 0 then offset = 1 end;
+
+    if (previousSliderValue == sliderValue) and (previousSliderValue ~= 1) then return 0 end;
+    EasyTabardDesigner_SetRowButtonsIdAndIcon(button1, button2, button3, button4, button5, button6, offset)
+    if rowValue == 1 then topRowButton1ID = button1:GetID()
+         print(topRowButton1ID);
+    end;
+    if rowValue == 5 then previousSliderValue = sliderValue end;
+
+end
+
+function EasyTabardDesigner_SetRowButtonsIdAndIcon(button1, button2, button3, button4, button5, button6, IdToSet)
+
+    local button1ID = IdToSet;
+    local button2ID = IdToSet + 1;
+    local button3ID = IdToSet + 2;
+    local button4ID = IdToSet + 3;
+    local button5ID = IdToSet + 4;
+    local button6ID = IdToSet + 5;
+
+    if button1ID > 196 then button1ID = 196 end;
+    if button1ID < 1 then button1ID = 1 end;
+    if button2ID > 196 then button2ID = 196 end;
+    if button2ID < 2 then button2ID = 2 end;
+    if button3ID > 196 then button3ID = 196 end;
+    if button3ID < 3 then button3ID = 3 end;
+    if button4ID > 196 then button4ID = 196 end;
+    if button4ID < 4 then button4ID = 4 end;
+    if button5ID > 196 then button5ID = 196 end;
+    if button5ID < 5 then button5ID = 5 end;
+    if button6ID > 196 then button6ID = 196 end;
+    if button6ID < 6 then button6ID = 6 end;
+
+    button1:SetID(button1ID);
     EasyTabardDesigner_SetEmblemButtonIcon(button1);
-    button2:SetID((rowValue * sliderValue) + 1);
+    button2:SetID(button2ID)
     EasyTabardDesigner_SetEmblemButtonIcon(button2);
-    button3:SetID((rowValue * sliderValue) + 2);
+    button3:SetID(button3ID)
     EasyTabardDesigner_SetEmblemButtonIcon(button3);
-    button4:SetID((rowValue * sliderValue) + 3);
+    button4:SetID(button4ID)
     EasyTabardDesigner_SetEmblemButtonIcon(button4);
-    button5:SetID((rowValue * sliderValue) + 4);
+    button5:SetID(button5ID)
     EasyTabardDesigner_SetEmblemButtonIcon(button5);
-    button6:SetID((rowValue * sliderValue) + 5);
+    button6:SetID(button6ID)
     EasyTabardDesigner_SetEmblemButtonIcon(button6);
 end
 
