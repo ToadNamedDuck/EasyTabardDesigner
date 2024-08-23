@@ -3,7 +3,7 @@
     <Script file="TabardIconIDs.lua"/>
     <!-- Template Icon Display/Select Button -->
      <Frame name="EasyTabardDesigner_IconSelectTemplate" virtual="true">
-        <Size x="50" y="50"/>
+        <Size x="50" y="75"/>
         <Layers>
             <Layer level="BACKGROUND">
                 <Texture setAllPoints="true">
@@ -11,10 +11,16 @@
                 </Texture>
             </Layer>
             <Layer level="OVERLAY">
+                <FontString name="$parent_IconName" inherits="GameFontNormalSmall" nonspacewrap="true">
+                    <Size x="50" y="35"/>
+                    <Anchors>
+                        <Anchor point="TOPLEFT" relativeTo="$parent" relativePoint="TOPLEFT"></Anchor>
+                    </Anchors>
+                </FontString>
                 <Texture name="$parent_TabardFrameEmblemTopRight" alphaMode="ADD">
                     <Size x="25" y="25"/>
                     <Anchors>
-                        <Anchor point="TOPRIGHT" relativeTo="$parent"/>
+                        <Anchor point="TOPRIGHT" relativeTo="$parent_IconName" relativePoint="BOTTOMRIGHT" y="10"/>
                     </Anchors>
                     <TexCoords left="0" right="0.5" top="0" bottom="1"/>
                 </Texture>
@@ -39,19 +45,13 @@
                     </Anchors>
                     <TexCoords left="0.5" right="0" top="0" bottom="1"/>
                 </Texture>
-                <FontString name="$parent_IconName" inherits="GameFontNormalSmall">
-                    <Size x="50" y="25"/>
-                    <Anchors>
-                        <Anchor point="TOPLEFT" relativeTo="$parent_TabardFrameEmblemTopLeft" relativePoint="TOPLEFT" y="4"></Anchor>
-                    </Anchors>
-                </FontString>
             </Layer>
         </Layers>
      </Frame>
 
      <!-- Icon Row Template -->
     <Frame name="EasyTabardDesigner_RowTemplate" virtual="true">
-        <Size x="300" y="50"/>
+        <Size x="300" y="75"/>
         <Anchors>
             <Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="$parent"/>
         </Anchors>
@@ -107,7 +107,7 @@
                 EasyTabardDesigner_OnEvent(self, event, ...);
             </OnEvent>
         </Scripts>
-        <Size x="200" y="250"/>
+        <Size x="200" y="375"/>
         <Anchors>
             <Anchor point="CENTER"/>
         </Anchors>
@@ -143,7 +143,7 @@
             <TabardModel name="EasyTabardDesigner_TabardModel" mixin="TabardModelFrameMixin">
                 <Size x="200" y="236"/>
                 <Anchors>
-                    <Anchor point="BOTTOM" relativeTo="EasyTabardDesignerFrame" x="30"/>
+                    <Anchor point="CENTER" relativeTo="EasyTabardDesignerFrame" x="30"/>
                 </Anchors>
             </TabardModel>
 
@@ -168,7 +168,7 @@
             </ScrollFrame> -->
 
             <Frame name="EasyTabardDesigner_IconFrame">
-                <Size x="300" y="250"/>
+                <Size x="300" y="375"/>
                 <Layers>
                     <Layer level="BACKGROUND">
                         <Texture setAllPoints="true">
@@ -206,7 +206,7 @@
             </Frame>
 
             <Slider name="EasyTabardDesigner_SliderTrack" orientation="VERTICAL" enableMouse="true" virtual="true" minValue="1" maxValue="29" valueStep="1" stepsPerPage="3" defaultValue="1">
-                <Size x="32" y="250"/>
+                <Size x="32" y="375"/>
                 <Layers>
                     <Layer level="BACKGROUND">
                         <Texture setAllPoints="true">

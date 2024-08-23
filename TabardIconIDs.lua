@@ -1,4 +1,4 @@
--- Offset for yellow is 32 for bottom and 33 for top. Offset for white is: 
+-- Offset for yellow is 32 for bottom and 33 for top. Offset for white is: RangeEnd - 2
 EasyTabardDesigner_TabardTable = {
     {
         ID = 180398,
@@ -972,7 +972,7 @@ EasyTabardDesigner_TabardTable = {
     },
     {
         ID = 467483,
-        Name = "Even More Arcane Eye",
+        Name = "Really Arcane Eye",
         RangeEnd = 467516
     },
     {
