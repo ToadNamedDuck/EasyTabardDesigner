@@ -157,6 +157,13 @@ function EasyTabardDesigner_SetRowButtonsIdAndIcon(button1, button2, button3, bu
     EasyTabardDesigner_SetEmblemButtonIcon(button6);
 end
 
+--Function that checks the current tabard id, and then calcs the offset of the clicked button
+function EasyTabardDesigner_IconButtonOnClick(iconID)
+    if iconID == nil then return 0 end;
+    local currentIndex = EasyTabardDesigner_GetCurrentEmblemIndex();
+    EasyTabardDesigner_TabardModel:CycleVariation(1,iconID - currentIndex)
+end
+
 function EasyTabardDesigner_OnEvent(self, event, ...)
     if event == "UNIT_MODEL_CHANGED" then EasyTabardDesigner_TabardModel:SetUnit("player") end
 end
