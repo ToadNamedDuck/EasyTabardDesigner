@@ -2,7 +2,12 @@
     <Script file="EasyTabardDesigner.lua"/>
     <Script file="TabardIconIDs.lua"/>
     <!-- Template Icon Display/Select Button -->
-     <Frame name="EasyTabardDesigner_IconSelectTemplate" virtual="true">
+     <Button name="EasyTabardDesigner_IconSelectTemplate" virtual="true">
+        <Scripts>
+            <OnClick>
+                EasyTabardDesigner_IconButtonOnClick(self:GetID());
+            </OnClick>
+        </Scripts>
         <Size x="50" y="75"/>
         <Layers>
             <Layer level="BACKGROUND">
@@ -47,7 +52,7 @@
                 </Texture>
             </Layer>
         </Layers>
-     </Frame>
+    </Button>
 
      <!-- Icon Row Template -->
     <Frame name="EasyTabardDesigner_RowTemplate" virtual="true">
@@ -56,36 +61,36 @@
             <Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="$parent"/>
         </Anchors>
         <Frames>
-            <Frame name="$parent_Icon1" inherits="EasyTabardDesigner_IconSelectTemplate">
+            <Button name="$parent_Icon1" inherits="EasyTabardDesigner_IconSelectTemplate">
                 <Anchors>
                     <Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="$parent"/>
                 </Anchors>
-            </Frame>
-            <Frame name="$parent_Icon2" inherits="EasyTabardDesigner_IconSelectTemplate">
+            </Button>
+            <Button name="$parent_Icon2" inherits="EasyTabardDesigner_IconSelectTemplate">
                 <Anchors>
                     <Anchor point="TOPLEFT" relativePoint="TOPRIGHT" relativeTo="$parent_Icon1"/>
                 </Anchors>
-            </Frame>
-            <Frame name="$parent_Icon3" inherits="EasyTabardDesigner_IconSelectTemplate">
+            </Button>
+            <Button name="$parent_Icon3" inherits="EasyTabardDesigner_IconSelectTemplate">
                 <Anchors>
                     <Anchor point="TOPLEFT" relativePoint="TOPRIGHT" relativeTo="$parent_Icon2"/>
                 </Anchors>
-            </Frame>
-            <Frame name="$parent_Icon4" inherits="EasyTabardDesigner_IconSelectTemplate">
+            </Button>
+            <Button name="$parent_Icon4" inherits="EasyTabardDesigner_IconSelectTemplate">
                 <Anchors>
                     <Anchor point="TOPLEFT" relativePoint="TOPRIGHT" relativeTo="$parent_Icon3"/>
                 </Anchors>
-            </Frame>
-            <Frame name="$parent_Icon5" inherits="EasyTabardDesigner_IconSelectTemplate">
+            </Button>
+            <Button name="$parent_Icon5" inherits="EasyTabardDesigner_IconSelectTemplate">
                 <Anchors>
                     <Anchor point="TOPLEFT" relativePoint="TOPRIGHT" relativeTo="$parent_Icon4"/>
                 </Anchors>
-            </Frame>
-            <Frame name="$parent_Icon6" inherits="EasyTabardDesigner_IconSelectTemplate">
+            </Button>
+            <Button name="$parent_Icon6" inherits="EasyTabardDesigner_IconSelectTemplate">
                 <Anchors>
                     <Anchor point="TOPLEFT" relativePoint="TOPRIGHT" relativeTo="$parent_Icon5"/>
                 </Anchors>
-            </Frame>
+            </Button>
         </Frames>
     </Frame>
 
@@ -146,26 +151,6 @@
                     <Anchor point="CENTER" relativeTo="EasyTabardDesignerFrame" x="30"/>
                 </Anchors>
             </TabardModel>
-
-            <!-- <ScrollFrame name="EasyTabardDesigner_IconScrollFrame" inherits="FauxScrollFrameTemplate">
-                <Size x="300" y="200"/>
-                <Anchors>
-                    <Anchor point="TOPLEFT" relativeTo="EasyTabardDesignerFrame" relativePoint="TOPRIGHT"/>
-                </Anchors>
-                <Scripts>
-                    <OnVerticalScroll>
-                        FauxScrollFrame_OnVerticalScroll(50, EasyTabardDesigner_EmblemIconScrollUpdate);
-                    </OnVerticalScroll>
-                </Scripts>
-                <Frames>
-                    <Frame name="TabardIcon_1" inherits="EasyTabardDesigner_IconSelectTemplate">
-                        <Size x="50" y="50"/>
-                        <Anchors>
-                            <Anchor point="TOPLEFT" relativeTo="EasyTabardDesignerFrame" relativePoint="TOPRIGHT"/>
-                        </Anchors>
-                    </Frame>
-                </Frames>
-            </ScrollFrame> -->
 
             <Frame name="EasyTabardDesigner_IconFrame">
                 <Size x="300" y="375"/>

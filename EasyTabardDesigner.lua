@@ -159,7 +159,7 @@ end
 
 --Function that checks the current tabard id, and then calcs the offset of the clicked button
 function EasyTabardDesigner_IconButtonOnClick(iconID)
-    if iconID == nil then return 0 end;
+    if (iconID == nil or iconID > 196) then return 0 end;
     local currentIndex = EasyTabardDesigner_GetCurrentEmblemIndex();
     EasyTabardDesigner_TabardModel:CycleVariation(1,iconID - currentIndex)
 end
