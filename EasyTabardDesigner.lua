@@ -32,7 +32,7 @@ end
 EasyTabardDesigner_Open = function()
     EasyTabardDesigner_TabardModel:InitializeTabardColors();
 
-    if (EasyTabardDesigner_TabardTable:IsGuildFrame()) then
+    if (EasyTabardDesigner_TabardModel:IsGuildTabard()) then
         EasyTabardDesigner_TabardModeText:SetText("Editing Guild Tabard")
     else
         EasyTabardDesigner_TabardModeText:SetText("Editing Personal Tabard")
