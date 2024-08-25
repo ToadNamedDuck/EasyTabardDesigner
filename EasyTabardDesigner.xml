@@ -94,7 +94,7 @@
         </Frames>
     </Frame>
 
-    <!-- Template Color/Other Select Button -->
+
     <!-- Other Template Accept/Cancel Button -->
     <!-- Main Frame -->
     <Frame name="EasyTabardDesignerFrame" movable="true" enableMouse="true" registerForDrag="LeftButton">
@@ -151,6 +151,14 @@
                     <Anchor point="CENTER" relativeTo="EasyTabardDesignerFrame" x="30"/>
                 </Anchors>
             </TabardModel>
+
+            <Frame name="EasyTabardDesigner_PropertiesSelection">
+                <Size x="200" y="100"/>
+                <Anchors>
+                    <Anchor point="BOTTOM" relativePoint="BOTTOM" relativeTo="EasyTabardDesignerFrame"/>
+                </Anchors>
+                <!-- fdgvsdfg -->
+            </Frame>
 
             <Frame name="EasyTabardDesigner_IconFrame">
                 <Size x="300" y="375"/>

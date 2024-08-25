@@ -21,8 +21,6 @@ EasyTabardDesigner_OnLoad = function(self)
 	self:RegisterEvent("UNIT_MODEL_CHANGED");
 	self:RegisterEvent("DISPLAY_SIZE_CHANGED");
 	self:RegisterEvent("UI_SCALE_CHANGED");
-    -- Text at top should change based on if you are editing guild tabard or personal tabard. Needs to be inside of the open function
-    EasyTabardDesigner_TabardModeText:SetText("Editing Guild Tabard")
 end
 
 -- X button
@@ -32,8 +30,15 @@ EasyTabardDesigner_CloseButton = function()
 end
 
 EasyTabardDesigner_Open = function()
-    EasyTabardDesignerFrame:Show();
     EasyTabardDesigner_TabardModel:InitializeTabardColors();
+
+    if (EasyTabardDesigner_TabardTable:IsGuildFrame()) then
+        EasyTabardDesigner_TabardModeText:SetText("Editing Guild Tabard")
+    else
+        EasyTabardDesigner_TabardModeText:SetText("Editing Personal Tabard")
+    end
+
+    EasyTabardDesignerFrame:Show();
 end
 
 --Populates all of the emblem icons in the emblem select list.
