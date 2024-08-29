@@ -173,8 +173,4 @@ function EasyTabardDesigner_OnEvent(self, event, ...)
     if event == "UNIT_MODEL_CHANGED" then EasyTabardDesigner_TabardModel:SetUnit("player") end
 end
 
--- EasyTabardDesigner_IconSelectButton_Click = function(tabardIconId) ?
--- EasyTabardDesigner_IconColorButton_Click = function(TabardIconColor) ?
--- EasyTabardDesigner_BorderSelectButton_Click = function(BorderId) ?
--- EasyTabardDesigner_BorderColorSelectButton_Click = function(BorderColor) ?
--- EasyTabardDesigner_BackgroundColorSelectButton_Click = function(BackgroundColor) ?
+

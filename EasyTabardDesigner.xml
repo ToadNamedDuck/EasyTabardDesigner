@@ -1,7 +1,7 @@
 <Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/ ..\..\Blizzard_SharedXML\UI.xsd">
     <Script file="EasyTabardDesigner.lua"/>
     <Script file="TabardIconIDs.lua"/>
-    
+
     <!-- Template Icon Display/Select Button -->
      <Button name="EasyTabardDesigner_IconSelectTemplate" virtual="true">
         <Scripts>
@@ -95,6 +95,69 @@
         </Frames>
     </Frame>
 
+    <!-- Template Left/Right Buttons for Other Customizations, Look borrowed from Blizz -->
+    <Frame name="EasyTabardDesigner_CustomizeOptionTemplate" virtual="true">
+        <Size x="164" y="20"/>
+        <Layers>
+            <Layer level="BACKGROUND">
+                <Texture name="$parentMiddle" file="Interface\Glues\CharacterCreate\CharacterCreate-LabelFrame">
+					<Size x="95" y="64"/>
+					<Anchors>
+						<Anchor point="TOP" x="0" y="17"/>
+					</Anchors>
+					<TexCoords left="0.1953125" right="0.8046875" top="0" bottom="1"/>
+				</Texture>
+				<Texture name="$parentLeft" file="Interface\Glues\CharacterCreate\CharacterCreate-LabelFrame">
+					<Size x="25" y="64"/>
+					<Anchors>
+						<Anchor point="RIGHT" relativeTo="$parentMiddle" relativePoint="LEFT"/>
+					</Anchors>
+					<TexCoords left="0" right="0.1953125" top="0" bottom="1"/>
+				</Texture>
+				<Texture name="$parentRight" file="Interface\Glues\CharacterCreate\CharacterCreate-LabelFrame">
+					<Size x="25" y="64"/>
+					<Anchors>
+						<Anchor point="LEFT" relativeTo="$parentMiddle" relativePoint="RIGHT"/>
+					</Anchors>
+					<TexCoords left="0.8046875" right="1" top="0" bottom="1"/>
+				</Texture>
+                <FontString name="$parent_Text" inherits="GameFontNormalSmall">
+                    <Size x="85" y="12"/>
+                    <Anchors>
+                        <Anchor point="CENTER" relativeTo="$parent"/>
+                    </Anchors>
+                </FontString>
+            </Layer>
+        </Layers>
+        <Frames>
+            <Button name="$parent_Left">
+                <Size x="32" y="32"/>
+                <Scripts>
+                    <OnClick>
+                        EasyTabardDesigner_TabardModel:CycleVariation(self:GetParent():GetID(), -1)
+                    </OnClick>
+                </Scripts>
+                <NormalTexture file="Interface\Buttons\UI-SpellbookIcon-PrevPage-Up"/>
+				<PushedTexture file="Interface\Buttons\UI-SpellbookIcon-PrevPage-Down"/>
+				<DisabledTexture file="Interface\Buttons\UI-SpellbookIcon-PrevPage-Disabled"/>
+				<HighlightTexture file="Interface\Buttons\UI-Common-MouseHilight" alphaMode="ADD"/>
+            </Button>
+
+            <Button name="$parent_Right">
+                <Size x="32" y="32"/>
+                <Scripts>
+                    <OnClick>
+                        EasyTabardDesigner_TabardModel:CycleVariation(self:GetParent():GetID(), 1)
+                    </OnClick>
+                </Scripts>
+                <NormalTexture file="Interface\Buttons\UI-SpellbookIcon-NextPage-Up"/>
+				<PushedTexture file="Interface\Buttons\UI-SpellbookIcon-NextPage-Down"/>
+				<DisabledTexture file="Interface\Buttons\UI-SpellbookIcon-NextPage-Disabled"/>
+				<HighlightTexture file="Interface\Buttons\UI-Common-MouseHilight" alphaMode="ADD"/>
+            </Button>
+        </Frames>
+
+    </Frame>
 
     <!-- Other Template Accept/Cancel Button -->
     <!-- Main Frame -->
