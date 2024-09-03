@@ -124,7 +124,7 @@
                 <FontString name="$parent_Text" inherits="GameFontNormalSmall">
                     <Size x="85" y="12"/>
                     <Anchors>
-                        <Anchor point="CENTER" relativeTo="$parent"/>
+                        <Anchor point="CENTER" relativeTo="$parent" x="0" y="-4"/>
                     </Anchors>
                 </FontString>
             </Layer>
@@ -132,6 +132,9 @@
         <Frames>
             <Button name="$parent_Left">
                 <Size x="32" y="32"/>
+                <Anchors>
+                    <Anchor point="TOPRIGHT" relativePoint="TOPLEFT" relativeTo="$parent" x="31" y="2"/>
+                </Anchors>
                 <Scripts>
                     <OnClick>
                         EasyTabardDesigner_TabardModel:CycleVariation(self:GetParent():GetID(), -1)
@@ -145,6 +148,9 @@
 
             <Button name="$parent_Right">
                 <Size x="32" y="32"/>
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativePoint="TOPRIGHT" relativeTo="$parent" x="-29" y="2"/>
+                </Anchors>
                 <Scripts>
                     <OnClick>
                         EasyTabardDesigner_TabardModel:CycleVariation(self:GetParent():GetID(), 1)
@@ -156,7 +162,6 @@
 				<HighlightTexture file="Interface\Buttons\UI-Common-MouseHilight" alphaMode="ADD"/>
             </Button>
         </Frames>
-
     </Frame>
 
     <!-- Other Template Accept/Cancel Button -->
@@ -212,16 +217,57 @@
             <TabardModel name="EasyTabardDesigner_TabardModel" mixin="TabardModelFrameMixin">
                 <Size x="200" y="236"/>
                 <Anchors>
-                    <Anchor point="CENTER" relativeTo="EasyTabardDesignerFrame" x="30"/>
+                    <Anchor point="CENTER" relativeTo="EasyTabardDesignerFrame" x="30" y="32"/>
                 </Anchors>
             </TabardModel>
 
             <Frame name="EasyTabardDesigner_PropertiesSelection">
                 <Size x="200" y="100"/>
                 <Anchors>
-                    <Anchor point="BOTTOM" relativePoint="BOTTOM" relativeTo="EasyTabardDesignerFrame"/>
+                    <Anchor point="BOTTOM" relativePoint="BOTTOM" relativeTo="EasyTabardDesignerFrame" y="24"/>
                 </Anchors>
-                <!-- fdgvsdfg -->
+                <Frames>
+                    <Frame name="EasyTabardDesigner_BackgroundChange" inherits="EasyTabardDesigner_CustomizeOptionTemplate" id="5">
+                        <Anchors>
+                            <Anchor point="BOTTOM" relativePoint="BOTTOM" relativeTo="$parent" y="8"/>
+                        </Anchors>
+                        <Scripts>
+                            <OnLoad>
+                                EasyTabardDesigner_BackgroundChange_Text:SetText(EMBLEM_BACKGROUND);
+                            </OnLoad>
+                        </Scripts>
+                    </Frame>
+                    <Frame name="EasyTabardDesigner_BorderColorChange" inherits="EasyTabardDesigner_CustomizeOptionTemplate" id="4">
+                        <Anchors>
+                            <Anchor point="BOTTOM" relativePoint="TOP" relativeTo="EasyTabardDesigner_BackgroundChange" y="3"/>
+                        </Anchors>
+                        <Scripts>
+                            <OnLoad>
+                                EasyTabardDesigner_BorderColorChange_Text:SetText(EMBLEM_BORDER_COLOR);
+                            </OnLoad>
+                        </Scripts>
+                    </Frame>
+                    <Frame name="EasyTabardDesigner_BorderChange" inherits="EasyTabardDesigner_CustomizeOptionTemplate" id="3">
+                        <Anchors>
+                            <Anchor point="BOTTOM" relativePoint="TOP" relativeTo="EasyTabardDesigner_BorderColorChange" y="3"/>
+                        </Anchors>
+                        <Scripts>
+                            <OnLoad>
+                                EasyTabardDesigner_BorderChange_Text:SetText(EMBLEM_BORDER);
+                            </OnLoad>
+                        </Scripts>
+                    </Frame>
+                    <Frame name="EasyTabardDesigner_IconColorChange" inherits="EasyTabardDesigner_CustomizeOptionTemplate" id="2">
+                        <Anchors>
+                            <Anchor point="BOTTOM" relativePoint="TOP" relativeTo="EasyTabardDesigner_BorderChange" y="3"/>
+                        </Anchors>
+                        <Scripts>
+                            <OnLoad>
+                                EasyTabardDesigner_IconColorChange_Text:SetText(EMBLEM_SYMBOL_COLOR);
+                            </OnLoad>
+                        </Scripts>
+                    </Frame>
+                </Frames>
             </Frame>
 
             <Frame name="EasyTabardDesigner_IconFrame">
