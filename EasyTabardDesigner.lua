@@ -174,7 +174,7 @@ end
 function EasyTabardDesigner_OnEvent(self, event, ...)
     if (event == "UNIT_MODEL_CHANGED" or event == "DISPLAY_SIZE_CHANGED" or event == "UI_SCALE_CHANGED") then EasyTabardDesigner_TabardModel:SetUnit("player") end;
     if (event == "TABARD_CANSAVE_CHANGED" or event == "TABARD_SAVE_PENDING") then EasyTabardDesigner_UpdateButtons() end;
-    if (event == "PLAYER_INTERACTION_MANAGER_FRAME_HIDE" and ... == 14) then EasyTabardDesignerFrame:Hide(); end;
+    if (event == "PLAYER_INTERACTION_MANAGER_FRAME_HIDE" and (... == 14 or ... == 65)) then EasyTabardDesignerFrame:Hide(); end;
 end
 
 function EasyTabardDesigner_UpdateButtons()
