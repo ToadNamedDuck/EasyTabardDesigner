@@ -270,6 +270,31 @@
                 </Frames>
             </Frame>
 
+            <Button name="EasyTabardDesigner_AcceptButton" inherits="UIPanelButtonTemplate" text="ACCEPT">
+				<Size x="100" y="22"/>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="EasyTabardDesigner_PropertiesSelection" relativePoint="BOTTOMLEFT"/>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						EasyTabardDesigner_TabardModel:Save();
+                        EasyTabardDesigner_CloseButton();
+					</OnClick>
+				</Scripts>
+			</Button>
+
+			<Button name="EasyTabardDesigner_CancelButton" inherits="UIPanelButtonTemplate" text="CANCEL">
+				<Size x="100" y="22"/>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="EasyTabardDesigner_AcceptButton" relativePoint="TOPRIGHT"/>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+                        EasyTabardDesigner_CloseButton();
+                    </OnClick>
+				</Scripts>
+			</Button>
+
             <Frame name="EasyTabardDesigner_IconFrame">
                 <Size x="300" y="375"/>
                 <Layers>

@@ -14,6 +14,7 @@ end
 local previousSliderValue = 1;
 
 EasyTabardDesigner_OnLoad = function(self)
+    _G["TabardFrame_Open"] = EasyTabardDesigner_Open;
     EasyTabardDesignerFrame:Hide();
     -- Register Events we want to listen for, which are just copied from the original tabard frame
     self:RegisterEvent("TABARD_CANSAVE_CHANGED");
@@ -21,12 +22,13 @@ EasyTabardDesigner_OnLoad = function(self)
 	self:RegisterEvent("UNIT_MODEL_CHANGED");
 	self:RegisterEvent("DISPLAY_SIZE_CHANGED");
 	self:RegisterEvent("UI_SCALE_CHANGED");
+    self:RegisterEvent("PLAYER_INTERACTION_MANAGER_FRAME_HIDE");
 end
 
 -- X button
 EasyTabardDesigner_CloseButton = function()
     EasyTabardDesignerFrame:Hide();
-    --Needs to stop Tabard Creation
+    CloseTabardCreation();
 end
 
 EasyTabardDesigner_Open = function()
@@ -170,7 +172,22 @@ function EasyTabardDesigner_IconButtonOnClick(iconID)
 end
 
 function EasyTabardDesigner_OnEvent(self, event, ...)
-    if event == "UNIT_MODEL_CHANGED" then EasyTabardDesigner_TabardModel:SetUnit("player") end
+    if (event == "UNIT_MODEL_CHANGED" or event == "DISPLAY_SIZE_CHANGED" or event == "UI_SCALE_CHANGED") then EasyTabardDesigner_TabardModel:SetUnit("player") end;
+    if (event == "TABARD_CANSAVE_CHANGED" or event == "TABARD_SAVE_PENDING") then EasyTabardDesigner_UpdateButtons() end;
+    if (event == "PLAYER_INTERACTION_MANAGER_FRAME_HIDE" and ... == 14) then EasyTabardDesignerFrame:Hide(); end;
+end
+
+function EasyTabardDesigner_UpdateButtons()
+    local guildName, rankName, rank = GetGuildInfo("player");
+    if (EasyTabardDesigner_TabardModel:IsGuildTabard() and (guildName == nil or rankName == nil or (rank > 0))) then
+        EasyTabardDesigner_AcceptButton:Disable();
+    else
+        if (EasyTabardDesigner_TabardModel:CanSaveTabardNow()) then
+            EasyTabardDesigner_AcceptButton:Enable();
+        else
+            EasyTabardDesigner_AcceptButton:Disable();
+        end
+    end
 end
 
 
