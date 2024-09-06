@@ -33,6 +33,7 @@ end
 
 EasyTabardDesigner_Open = function()
     EasyTabardDesigner_TabardModel:InitializeTabardColors();
+    EasyTabardDesigner_UpdateButtons()
 
     if (EasyTabardDesigner_TabardModel:IsGuildTabard()) then
         EasyTabardDesigner_TabardModeText:SetText("Editing Guild Tabard")
