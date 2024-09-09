@@ -15,6 +15,7 @@ local previousSliderValue = 1;
 
 EasyTabardDesigner_OnLoad = function(self)
     _G["TabardFrame_Open"] = EasyTabardDesigner_Open;
+    EasyTabardDesigner_TabardModel:SetViewTranslation(30, 0); --recenters the tabardmodel without moving the entire frame over
     EasyTabardDesignerFrame:Hide();
     -- Register Events we want to listen for, which are just copied from the original tabard frame
     self:RegisterEvent("TABARD_CANSAVE_CHANGED");

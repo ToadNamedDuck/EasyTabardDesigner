@@ -217,7 +217,7 @@
             <TabardModel name="EasyTabardDesigner_TabardModel" mixin="TabardModelFrameMixin">
                 <Size x="200" y="236"/>
                 <Anchors>
-                    <Anchor point="CENTER" relativeTo="EasyTabardDesignerFrame" x="30" y="32"/>
+                    <Anchor point="CENTER" relativeTo="EasyTabardDesignerFrame" y="32"/>
                 </Anchors>
             </TabardModel>
 
