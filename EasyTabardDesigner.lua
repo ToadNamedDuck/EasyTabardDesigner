@@ -44,9 +44,24 @@ EasyTabardDesigner_Open = function()
 
     EasyTabardDesignerFrame:Show();
 end
+--VVVVVVVVVVVVVVVVVVVVVVVVVVVVV Click and Drag for Model VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+function EasyTabardDesigner_TabardModel_MouseDown(tabardModel, button)
+    tabardModel.ButtonDown = button;
+end
 
---Populates all of the emblem icons in the emblem select list.
+function EasyTabardDesigner_TabardModel_MouseUp(tabardModel)
+    tabardModel.ButtonDown = nil;
+end
 
+function EasyTabardDesigner_TabardModel_OnUpdate(tabardModel)
+    if tabardModel.ButtonDown then
+        if tabardModel.ButtonDown == "LeftButton" then
+            local deltaX, deltaY = GetScaledCursorDelta()
+            tabardModel:SetFacing((tabardModel:GetFacing() + (deltaX/50)))
+        end
+    end
+end
+--^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 --Sets the Emblem in each of the display buttons
 function EasyTabardDesigner_SetEmblemButtonIcon(button)

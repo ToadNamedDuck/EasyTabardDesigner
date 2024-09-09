@@ -214,11 +214,22 @@
                 </Scripts>
             </Button>
 
-            <TabardModel name="EasyTabardDesigner_TabardModel" mixin="TabardModelFrameMixin">
+            <TabardModel name="EasyTabardDesigner_TabardModel" mixin="TabardModelFrameMixin" enableMouse="true">
                 <Size x="200" y="236"/>
                 <Anchors>
                     <Anchor point="CENTER" relativeTo="EasyTabardDesignerFrame" y="32"/>
                 </Anchors>
+                <Scripts>
+                    <OnMouseDown>
+                        EasyTabardDesigner_TabardModel_MouseDown(self, button)
+                    </OnMouseDown>
+                    <OnMouseUp>
+                        EasyTabardDesigner_TabardModel_MouseUp(self)
+                    </OnMouseUp>
+                    <OnUpdate>
+                        EasyTabardDesigner_TabardModel_OnUpdate(self)
+                    </OnUpdate>
+                </Scripts>
             </TabardModel>
 
             <Frame name="EasyTabardDesigner_PropertiesSelection">
