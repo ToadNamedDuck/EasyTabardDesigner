@@ -61,6 +61,11 @@ function EasyTabardDesigner_TabardModel_OnUpdate(tabardModel)
         end
     end
 end
+
+function EasyTabardDesigner_TabardModel_OnMouseWheel(tabardModel, delta)
+    local x, y, z = tabardModel:GetPosition();
+    tabardModel:SetPosition(x + (delta/15), y, z);
+end
 --^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 --Sets the Emblem in each of the display buttons

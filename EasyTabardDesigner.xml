@@ -221,14 +221,17 @@
                 </Anchors>
                 <Scripts>
                     <OnMouseDown>
-                        EasyTabardDesigner_TabardModel_MouseDown(self, button)
+                        EasyTabardDesigner_TabardModel_MouseDown(self, button);
                     </OnMouseDown>
                     <OnMouseUp>
-                        EasyTabardDesigner_TabardModel_MouseUp(self)
+                        EasyTabardDesigner_TabardModel_MouseUp(self);
                     </OnMouseUp>
                     <OnUpdate>
-                        EasyTabardDesigner_TabardModel_OnUpdate(self)
+                        EasyTabardDesigner_TabardModel_OnUpdate(self);
                     </OnUpdate>
+                    <OnMouseWheel>
+                        EasyTabardDesigner_TabardModel_OnMouseWheel(self, delta);
+                    </OnMouseWheel>
                 </Scripts>
             </TabardModel>
 
