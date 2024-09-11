@@ -369,6 +369,18 @@
                 </Scripts>
             </Slider>
 
+            <Frame name="EasyTabardDesigner_SliderAndIcons" enableMouse="true">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="EasyTabardDesigner_IconFrame"/>
+                    <Anchor point="BOTTOMRIGHT" relativePoint="BOTTOMRIGHT" relativeTo="EasyTabardDesigner_SliderTrack"/>
+                </Anchors>
+                <Scripts>
+                    <OnMouseWheel>
+                        EasyTabardDesigner_ScrollSliderUpdate(delta)
+                    </OnMouseWheel>
+                </Scripts>
+            </Frame>
+
         </Frames>
     </Frame>
 </Ui>

@@ -44,6 +44,7 @@ EasyTabardDesigner_Open = function()
 
     EasyTabardDesignerFrame:Show();
 end
+
 --VVVVVVVVVVVVVVVVVVVVVVVVVVVVV Click and Drag for Model VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
 function EasyTabardDesigner_TabardModel_MouseDown(tabardModel, button)
     tabardModel.ButtonDown = button;
@@ -110,6 +111,18 @@ function EasyTabardDesigner_GetCurrentEmblemIndex()
             n = n + 1;
         end
     end
+end
+
+function EasyTabardDesigner_ScrollSliderUpdate(delta)
+    local value = math.floor(EasyTabardDesigner_SliderTrack:GetValue());
+    if (delta > 0) then value = value - 1 end;
+    if (delta < 0) then value = value + 1 end;
+
+    if value < 1 then value = 1 end;
+    if value > 29 then value = 29 end;
+
+    EasyTabardDesigner_SliderTrack:SetValue(value);
+    EasyTabardDesigner_UpdateRows(value);
 end
 
 --OnValueChanged for slider
@@ -211,5 +224,3 @@ function EasyTabardDesigner_UpdateButtons()
         end
     end
 end
-
-
