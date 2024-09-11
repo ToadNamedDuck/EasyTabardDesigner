@@ -2,14 +2,14 @@
 -- Blizzard's current Tabard UI is terrible, and I want it to look a little more like the collections panel with each option showing up.
 
 -- Slash command which makes the xml frame visible
-SLASH_TABARDSHOW1 = "/tabardshow"
-SlashCmdList["TABARDSHOW"] = function(msg, editBox)
-    if EasyTabardDesignerFrame:IsVisible() then
-        EasyTabardDesignerFrame:CloseButton();
-    else
-        EasyTabardDesigner_Open();
-    end
-end
+-- SLASH_TABARDSHOW1 = "/tabardshow"
+-- SlashCmdList["TABARDSHOW"] = function(msg, editBox)
+--     if EasyTabardDesignerFrame:IsVisible() then
+--         EasyTabardDesignerFrame:CloseButton();
+--     else
+--         EasyTabardDesigner_Open();
+--     end
+-- end
 
 local previousSliderValue = 1;
 
